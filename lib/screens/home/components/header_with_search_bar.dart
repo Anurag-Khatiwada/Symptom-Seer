@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:s_seer_final/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,7 +14,7 @@ class HeaderWithSearchBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(height: size.height*0.25,
+    return Container(height: size.height*0.25,//color: Colors.black,
     child: Stack(
       children: [
         Container(
@@ -23,28 +25,30 @@ class HeaderWithSearchBox extends StatelessWidget {
               bottomLeft: Radius.circular(60),
               bottomRight: Radius.circular(60))
           ),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 30,bottom: 30),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Welcome !", style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold,
-                      fontSize: 40,
-                    ),),
-                    Text("Predict health, live well.", style: TextStyle(
-                      fontSize: 16, color: Colors.white
-                    ),),
-                  ],
+          child: Padding(
+            padding: const EdgeInsets.only(right: kDefaultPadding, bottom: kDefaultPadding),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: kDefaultPadding,right: kDefaultPadding),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Welcome !", style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold,
+                        fontSize: 40,
+                      ),),
+                      Text("Predict health, live well.", style: TextStyle(
+                        fontSize: 16, color: Colors.white
+                      ),),
+                    ],
+                  ),
                 ),
-              ),Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 50),
-                child: Image.asset("assets/images/banner.png"),
-              )
-            ],
+                Spacer(),
+              Image.asset("assets/images/banner.png")
+              ],
+            ),
           ),
         ),
         Positioned(
@@ -58,9 +62,9 @@ class HeaderWithSearchBox extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(27),
             boxShadow: [BoxShadow(
-              offset: Offset(0, 10),
-              blurRadius: 30,
-              color: kPrimaryColor.withOpacity(0.3)
+              offset: Offset(0, 20),
+              blurRadius: 20,
+              color: kPrimaryColor.withOpacity(0.2)
             )]
           ),
           child: Row(
