@@ -23,7 +23,7 @@ class TitleWithMoreBtn extends StatelessWidget {
               backgroundColor: kPrimaryColor,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))
             ),
-            onPressed: press(),
+            onPressed: (){},
             child: Text(" More ",style: TextStyle(color: Colors.white),),)
         ],
       ),

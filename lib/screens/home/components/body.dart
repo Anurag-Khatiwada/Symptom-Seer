@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'title_with_more.dart';
 import 'header_with_search_bar.dart';
+import 'common_disease_slider.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -14,9 +15,11 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           HeaderWithSearchBox(size: size),
-          TitleWithMoreBtn(title: "Common Diseases", press: (){})
+          TitleWithMoreBtn(title: "Common Diseases", press: (){}),
+          CommonDiseaseSlider(),
         ],
       ),
     );
   }
 }
+
