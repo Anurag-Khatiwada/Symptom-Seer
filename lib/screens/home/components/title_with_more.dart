@@ -56,9 +56,10 @@ class TitleWithUnderline extends StatelessWidget {
               margin: EdgeInsets.only(right: kDefaultPadding/4),
               height: 7,
               color: kPrimaryColor.withOpacity(0.15),)
-            )
+            ),
         ],
       ),
+      
     );
   }
 }
