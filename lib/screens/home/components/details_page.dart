@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:s_seer_final/constants.dart';
 
 class Detailpage extends StatelessWidget{
-const Detailpage({super.key, required this.num});
+Detailpage({super.key, required this.num, required this.name, required this.symptoms, required this.description, required this.prevention});
 
-final int num;
+int num;
+String name;
+String symptoms;
+String description;
+String prevention;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +17,7 @@ final int num;
       backgroundColor: kBackgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(25),
+          padding: EdgeInsets.all(25),
           child: Container(
             height: size.height*0.95,
             width: size.width*0.95,
@@ -24,19 +28,39 @@ final int num;
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Text("Disease $num",
-                                  style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                      padding: EdgeInsets.fromLTRB(10.0,30,10,20),
+                      child: Text(name,
+                                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(10,10,10,10),
-                      child: Text("Symptoms: dsadasdasd, asdasdas, asdasdas,fgdsgdfg, dfgdfg ",
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10,10,10,0),
+                      child: Text("Symptoms",textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                     ),
-                    const Padding(
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10,10,10,10),
+                      child: Text(symptoms,textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 20)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10,10,10,0),
+                      child: Text("Description",textAlign: TextAlign.left,
+                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    Padding(
                       padding: EdgeInsets.fromLTRB(10.0,10,10,10),
-                      child: Text("This is a description for the disease which is opened from the homepage. ",
-                            style: TextStyle(fontSize: 22)),
+                      child: Text(description,textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 20)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10,10,10,0),
+                      child: Text("Prevention",textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10.0,10,10,30),
+                      child: Text(prevention,textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 20)),
                     ),
                  
                   ],

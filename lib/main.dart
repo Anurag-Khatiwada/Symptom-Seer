@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:s_seer_final/splash.dart';
 import 'constants.dart';
-import 'package:s_seer_final/screens/home/homescreen.dart';
 void main() {
   runApp(MyApp());
 }
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: Splash(),
     );
   }
 }
