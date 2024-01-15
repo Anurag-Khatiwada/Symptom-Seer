@@ -16,7 +16,7 @@ class Body extends StatelessWidget {
         children: [
           HeaderWithSearchBox(size: size),
           TitleWithUnderline(text: "Common Diseases"),
-          CommonDiseaseSlider(),
+          CommonDiseaseSlider(press: ()=>{}),
         ],
       ),
     );
