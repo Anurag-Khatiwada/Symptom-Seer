@@ -20,11 +20,16 @@ class _CommonDiseaseSliderState extends State<CommonDiseaseSlider> {
 
   List _common = [];
   List _disname = ["COMMON COLD", "CHICKEN POX","DENGUE","JAUNDICE","MALARIA"];
+  List symp = ["continuous sneezing, chills, fatigue, cough, high fever, headache, swelled lymph nodes, malaise, phlegm, throat irritation, redness of eyes, sinus pressure, runny nose, congestion, chest pain, loss of smell, muscle pain",
+  "itching, skin rash, fatigue, lethargy, high fever, headache, loss of appetite, mild fever,swelled lymph nodes, malaise, red spots over body",
+  "skin rash, chills, joint pain, vomiting, fatigue, high fever, headache, nausea, loss of appetite,pain behind the eyes, backpain, muscle pain, red spots over body",
+  "itching, vomiting, fatigue, weight loss, high fever, yellowish skin, dark urine, abdominal pain",
+  " chills, vomiting, high fever, sweating, headache, nausea, muscle pain"];
 
 @override
 void initState() {
     _getThingsOnStartup().then((value){
-      print('Async done');
+      print(' Common Async done');
     });
     super.initState();
   }
@@ -47,7 +52,7 @@ void initState() {
         CarouselSlider(items: [0,1,2,3,4].map((i) {
           return GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> Detailpage(num: i, name: _common[i]["name"],symptoms: _common[i]["symptoms"],description: _common[i]["description"],  prevention: _common[i]["prevention"],)));      
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> Detailpage(num: i, name: _common[i]["name"],symptoms: _common[i]["symptoms"],description: _common[i]["description"],  prevention: _common[i]["prevention"],remedies: _common[i]["remedies"],)));      
             },
             child: Container(
               width: MediaQuery.of(context).size.width,
@@ -68,7 +73,14 @@ void initState() {
                   Padding(
                     padding:  EdgeInsets.all(15.0),
                     child: Text("Symptoms",overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 20),),
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding:  EdgeInsets.fromLTRB(20,0,20,20),
+                      child: Text(symp[i],overflow: TextOverflow.clip,maxLines: 4,
+                      style: TextStyle(fontSize: 18)),
+                    ),
                   )
                 ],
               ),

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:s_seer_final/constants.dart';
 
 class Detailpage extends StatelessWidget{
-Detailpage({super.key, required this.num, required this.name, required this.symptoms, required this.description, required this.prevention});
+Detailpage({super.key, required this.num, required this.name, required this.symptoms, required this.description, required this.prevention,required this.remedies});
 
 int num;
 String name;
 String symptoms;
 String description;
 String prevention;
+String remedies;
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +45,12 @@ String prevention;
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10,10,10,0),
-                      child: Text("Description",textAlign: TextAlign.left,
+                      child: Text("Description",textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10.0,10,10,10),
-                      child: Text(description,textAlign: TextAlign.center,
+                      child: Text(description,textAlign: TextAlign.justify,
                             style: TextStyle(fontSize: 20)),
                     ),
                     Padding(
@@ -58,11 +59,20 @@ String prevention;
                             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10.0,10,10,30),
-                      child: Text(prevention,textAlign: TextAlign.center,
+                      padding: EdgeInsets.fromLTRB(10.0,10,10,0),
+                      child: Text(prevention,textAlign: TextAlign.justify,
                             style: TextStyle(fontSize: 20)),
                     ),
-                 
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10,10,10,0),
+                      child: Text("Remedies",textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10.0,10,10,30),
+                      child: Text(remedies,textAlign: TextAlign.justify,
+                            style: TextStyle(fontSize: 20)),
+                    ),
                   ],
                 ),
               ),

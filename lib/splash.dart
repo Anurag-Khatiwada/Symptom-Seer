@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:s_seer_final/constants.dart';
-import 'package:s_seer_final/screens/home/homescreen.dart';
+import 'package:s_seer_final/homescreen.dart';
 class Splash extends StatefulWidget {
   const Splash({super.key});
 
