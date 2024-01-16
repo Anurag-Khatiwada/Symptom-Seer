@@ -11,7 +11,7 @@ class CommonDiseaseSlider extends StatefulWidget {
     super.key, required this.press,
   });
   final Function press;
-
+  
   @override
   State<CommonDiseaseSlider> createState() => _CommonDiseaseSliderState();
 }

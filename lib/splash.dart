@@ -24,7 +24,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Container(
       color: kPrimaryColor,
-      child: Image.asset('assets/images/logo.png'),
+      child: Image.asset('assets/images/splash.png'),
     );
   }
 }

@@ -42,18 +42,23 @@ class _MyDrawerState extends State<MyDrawer> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Column(
-            children: [
-              buildHeadItems(context),
-              ListTile(
-                leading: const Icon(Icons.menu_book),
-                title: const Text("Diseases Data"),
-                onTap:(){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AllPage(all: _all)));
-                }
-                )
-              ],
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Wrap(
+                runSpacing: 16,
+              children: [
+                buildHeadItems(context),
+                ListTile(
+                  leading: const Icon(Icons.menu_book),
+                  title: const Text("Diseases Data"),
+                  onTap:(){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>AllPage(all: _all)));
+                  }
+                  )
+                ],
+              ),
             ),
+            const Divider(color: Colors.black),
             buildMenuItems(context),
           ],
         ),

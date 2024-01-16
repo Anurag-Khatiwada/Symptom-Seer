@@ -49,7 +49,7 @@ String remedies;
                             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10.0,10,10,10),
+                      padding: EdgeInsets.fromLTRB(15.0,10,15,10),
                       child: Text(description,textAlign: TextAlign.justify,
                             style: TextStyle(fontSize: 20)),
                     ),
@@ -59,7 +59,7 @@ String remedies;
                             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10.0,10,10,0),
+                      padding: EdgeInsets.fromLTRB(15.0,10,15,0),
                       child: Text(prevention,textAlign: TextAlign.justify,
                             style: TextStyle(fontSize: 20)),
                     ),
@@ -69,7 +69,7 @@ String remedies;
                             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10.0,10,10,30),
+                      padding: EdgeInsets.fromLTRB(15.0,10,15,30),
                       child: Text(remedies,textAlign: TextAlign.justify,
                             style: TextStyle(fontSize: 20)),
                     ),
