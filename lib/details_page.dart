@@ -30,13 +30,25 @@ String remedies;
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(10.0,30,10,20),
-                      child: Text(name,
-                                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+                      child: Container(decoration:BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: kBackgroundColor),
+                        child: Center(
+                          child: Text(name,overflow: TextOverflow.clip,textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10,10,10,0),
-                      child: Text("Symptoms",textAlign: TextAlign.left,
-                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      child: Container(decoration:BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: kBackgroundColor),width: 200,
+                        child: Center(
+                          child: Text("Symptoms",textAlign: TextAlign.left,
+                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10,10,10,10),
@@ -45,8 +57,14 @@ String remedies;
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10,10,10,0),
-                      child: Text("Description",textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      child: Container(decoration:BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: kBackgroundColor),width: 200,
+                        child: Center(
+                          child: Text("Description",textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(15.0,10,15,10),
@@ -55,8 +73,14 @@ String remedies;
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10,10,10,0),
-                      child: Text("Prevention",textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      child: Container(decoration:BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: kBackgroundColor),width: 200,
+                        child: Center(
+                          child: Text("Prevention",textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(15.0,10,15,0),
@@ -65,8 +89,14 @@ String remedies;
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(10,10,10,0),
-                      child: Text("Remedies",textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                      child: Container(decoration:BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: kBackgroundColor),width: 200,
+                        child: Center(
+                          child: Text("Remedies",textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(15.0,10,15,30),
