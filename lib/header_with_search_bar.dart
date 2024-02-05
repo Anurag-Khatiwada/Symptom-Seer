@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:s_seer_final/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:multi_dropdown/multiselect_dropdown.dart';
 
 class HeaderWithSearchBox extends StatelessWidget {
   const HeaderWithSearchBox({
@@ -18,7 +19,7 @@ class HeaderWithSearchBox extends StatelessWidget {
     child: Stack(
       children: [
         Container(
-          height: size.height*0.2-27,
+          height: size.height*0.2-25,
           decoration: BoxDecoration(
             color: kPrimaryColor,
             borderRadius: BorderRadius.only(
@@ -51,15 +52,47 @@ class HeaderWithSearchBox extends StatelessWidget {
             ),
           ),
         ),
+        
         Positioned(
-          bottom: 30,left: 0,right: 0,
-          child: Container(
+          bottom: 20,left: 0,right: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: MultiSelectDropDown(
+                  padding: EdgeInsets.all(10),
+                  showClearIcon: true,
+                  borderWidth: 0,
+                  onOptionSelected: (options) {
+                    debugPrint(options.toString());
+                  },hint: "Select Symptoms",borderRadius: 27,
+                  options: const <ValueItem>[
+                    ValueItem(label: 'Option 1', value: '1'),
+                    ValueItem(label: 'Option 2', value: '2'),
+                    ValueItem(label: 'Option 3', value: '3'),
+                    ValueItem(label: 'Option 4', value: '4'),
+                    ValueItem(label: 'Option 5', value: '5'),
+                    ValueItem(label: 'Option 6', value: '6'),
+                    ValueItem(label: 'Option 7', value: '7'),
+                    ValueItem(label: 'Option 8', value: '8'),
+                    ValueItem(label: 'Option 9', value: '9'),
+                    ValueItem(label: 'Option 0', value: '0'),
+                  ],
+                  selectionType: SelectionType.multi,
+                  chipConfig: const ChipConfig(wrapType: WrapType.wrap),
+                  dropdownHeight: 500,
+                  optionTextStyle: const TextStyle(fontSize: 12),
+                  selectedOptionIcon: const Icon(Icons.check_circle),
+                  searchEnabled: true,
+                  searchLabel: ("Search Symptoms"),
+                ),
+            
+          ),
+           /*Container(
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(horizontal: kDefaultPadding),
             padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
           height: 60,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Color.fromARGB(255, 83, 18, 18),
             borderRadius: BorderRadius.circular(27),
             boxShadow: [BoxShadow(
               offset: Offset(0, 20),
@@ -79,11 +112,16 @@ class HeaderWithSearchBox extends StatelessWidget {
                   ),
                 ),
               ),
-              SvgPicture.asset("assets/icons/search.svg")
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,0,0,0),
+                child: SvgPicture.asset("assets/icons/search.svg"),
+              )
             ],
           ),
-        ))
+        )*/
+        )
       ],
-    ));
+    )
+    );
   }
 }

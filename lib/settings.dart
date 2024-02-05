@@ -23,19 +23,22 @@ class _SettingPageState extends State<SettingPage> {
     ),
     body: Column(
       children: [
-        Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: kPrimaryColor,
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: kPrimaryColor,
+                        ),
+                        child: Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 70,
+                        ),
                       ),
-                      child: Icon(
-                        Icons.call,
-                        color: Colors.white,
-                        size: 70,
-                      ),
-                    )
+        )
       ]
     )
       

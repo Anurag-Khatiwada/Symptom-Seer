@@ -65,15 +65,30 @@ void initState() {
                 children: [
                   Padding(
                     padding:  EdgeInsets.fromLTRB(0, 12, 0, 0),
-                    child: Text(//_common[i]["name"],
-                      _disname[i],
-                      style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    child: Container(
+                      width: 250,
+                      decoration: BoxDecoration(
+                      color: kBackgroundColor,
+                      borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text(//_common[i]["name"],
+                          _disname[i],
+                          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ),
                   Padding(
                     padding:  EdgeInsets.all(15.0),
-                    child: Text("Symptoms",overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                    child: Container(width: 110,decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: kBackgroundColor
+                    ),
+                      child: Center(
+                        child: Text("Symptoms",
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: Padding(

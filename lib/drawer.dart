@@ -69,7 +69,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
             ),
             const Divider(color: Colors.black),
-            Container(
+            /*Container(
               padding: EdgeInsets.all(20),
               child: ListTile(tileColor: kPrimaryColor,shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(20)),
                       leading: const Icon(Icons.settings),
@@ -78,11 +78,11 @@ class _MyDrawerState extends State<MyDrawer> {
                        Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
                       }
                     ),
-            ),
+            ),*/
             Container(
-              padding: EdgeInsets.fromLTRB(20,0,20,10),
+              padding: EdgeInsets.fromLTRB(20,20,20,10),
               child: ListTile(tileColor: kPrimaryColor,shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(20)),
-                      leading: const Icon(Icons.help),
+                      leading: const Icon(Icons.help_outline),
                       title: const Text("Help Center"),
                       onTap:(){
                        Navigator.push(context, MaterialPageRoute(builder: (context)=>HelpPage()));
