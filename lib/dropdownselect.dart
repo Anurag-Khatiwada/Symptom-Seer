@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:s_seer_final/app_data_controller.dart';
 import 'package:s_seer_final/constants.dart';
+import 'package:s_seer_final/displayscreen.dart';
 import 'package:s_seer_final/homescreen.dart';
 import 'package:s_seer_final/subjectmodel.dart';
 
@@ -22,12 +23,12 @@ class _DropdownSelectState extends State<DropdownSelect> {
     
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {controller.getSubjectData();});
     return Positioned(
-      bottom: 20,left: 0,right: 0, 
+      bottom: 15,left: 0,right: 0, 
       child: Column(
           children: [
             GetBuilder<AppDataController>(builder: (controller) {
               return Padding(
-                padding: const EdgeInsets.fromLTRB(15,0,15,10),
+                padding: const EdgeInsets.fromLTRB(20,0,20,10),
                 child: MultiSelectDialogField(
                   dialogHeight: 200,
                   searchable: true,
@@ -36,11 +37,11 @@ class _DropdownSelectState extends State<DropdownSelect> {
                   decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(27),
-                  border: Border.all(color: Colors.white)
+                  border: Border.all(color: Color.fromARGB(255, 18, 48, 59))
                   ),
-                  buttonIcon: const Icon(Icons.arrow_drop_down, color: Colors.black,),
-                  buttonText: const Text("Search Symptoms",
-                  style: TextStyle(color: Colors.black, fontSize: 17),),
+                  buttonIcon: const Icon(null, color: Color.fromARGB(255, 153, 153, 153),size: 30,),
+                  buttonText: const Text("                     Search Symptoms",
+                  style: TextStyle(color: Color.fromARGB(255, 145, 145, 145), fontSize: 17),),
                   onConfirm: (results) {
                     subjectData=[];
                     for (var i = 0; i < results.length; i++) {
@@ -54,8 +55,10 @@ class _DropdownSelectState extends State<DropdownSelect> {
                     {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Container(
-                          padding: EdgeInsets.all(16),
-                          child: Row(
+                          padding: const EdgeInsets.all(16),
+                          height: 90,
+                          decoration: BoxDecoration(color: kPrimaryColor,borderRadius: BorderRadius.circular(10)),
+                          child: const Row(
                             children: [
                               SizedBox(width: 30,),
                               Expanded(
@@ -73,20 +76,20 @@ class _DropdownSelectState extends State<DropdownSelect> {
                               ),
                             ],
                           ),
-                          height: 90,
-                          decoration: BoxDecoration(color: kPrimaryColor,borderRadius: BorderRadius.circular(10)),
                           ),
                           behavior: SnackBarBehavior.floating,
                           backgroundColor: Colors.transparent,
                           elevation: 0,
                         )
                         );
-                      subjectData.clear();
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));      
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));      
+                    }
+                    else if(results.length==0){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));      
                     }
                     else{
-                      //request api and get data here
-
+                      //go to new page with the subject data and request api and display data there
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> DisplayScreen(data:subjectData)));  
                     }
                   },
                   
