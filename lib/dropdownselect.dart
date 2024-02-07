@@ -47,7 +47,6 @@ class _DropdownSelectState extends State<DropdownSelect> {
                     for (var i = 0; i < results.length; i++) {
                       SympModel data = results[i] as SympModel;
                       print(data.symId);
-                      print(data.symName);
                       subjectData.add(data.symId);
                     }
                     print("data $subjectData");

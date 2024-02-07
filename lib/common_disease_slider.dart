@@ -34,7 +34,7 @@ void initState() {
     super.initState();
   }
   Future _getThingsOnStartup() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 1));
     readJson();
   }
   Future<void> readJson() async{
