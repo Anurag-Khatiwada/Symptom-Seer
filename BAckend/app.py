@@ -15,7 +15,7 @@ def receive_json():
             print('Received JSON:', data)
         
             # You can perform additional processing or validation here
-            df3 = pd.read_csv("Training.csv", usecols=['pain_behind_the_eyes',
+            df3 = pd.read_csv("E:\Flutter\s_seer_final\Backend\Training.csv", usecols=['pain_behind_the_eyes',
              'sunken_eyes',
              'movement_stiffness',
              'family_history',
@@ -111,9 +111,12 @@ def receive_json():
             dtc.fit(X_train, y_train)
             cols=list(df_sorted_columns.columns)
             cols.remove('prognosis')
-
-            symp_name=data
-            x=0
+            import json
+            symp_name=(data)
+            print(type(data))
+            print(symp_name)
+            print(type(symp_name))
+            # x=0
             # while True:
 
             #     n=input('Enter the symptoms')
@@ -125,30 +128,34 @@ def receive_json():
             # print(x)
 
 
-            dis=[]
-            def reta(x,num=0):
+            dis=[1 if i in symp_name else 0 for i in cols]
+            # def reta(x,num=0):
 
-                for i in cols:
-                    if(i ==  symp_name[num]):
-                        print('you have entered ' + symp_name[num])
-                        dis.append(1)
+            #     for i in cols:
+            #         if(i ==  symp_name[num]):
+            #             print('you have entered ' + symp_name[num])
+            #             dis.append(1)
 
-                        x-=1
-                        if x==0:
-                            x=0
-                        else:
-                            num+=1
-                    else: 
-                        dis.append(0)
-            reta(x)
-            dis=np.array(dis)
-            dis=dis.reshape([1,72])
-            predicteddtc=dtc.predict(dis)
-            print(predicteddtc)
-            print(le.inverse_transform(dtc.predict(dis)))
+            #             x-=1
+            #             if x==0:
+            #                 x=0
+            #             else:
+            #                 num+=1
+            #         else: 
+            #             dis.append(0)
+            # reta(x)
+            dis=np.array(dis).reshape(1,-1)
+            # dis=dis.reshape([1,72])
+            predicted_dtc=dtc.predict(dis)
+            predicted_disease=le.inverse_transform(predicted_dtc)
+            print("predicted_disease: ",predicted_disease[0])
+            
 
+            # print(predicteddtc)
+            # print(le.inverse_transform(dtc.predict(dis)))
+            # print(type(le.inverse_transform(dtc.predict(dis))))
 
-            return jsonify({'status': 'success', 'message': 'JSON received successfully'})
+            return jsonify({'status': 'success', 'message': predicted_disease[0]})
         else:
             return jsonify({'status': 'error', 'message': 'No JSON data received'}), 400
 
@@ -157,4 +164,4 @@ def receive_json():
         return jsonify({'status': 'error', 'message': 'Internal server error'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 

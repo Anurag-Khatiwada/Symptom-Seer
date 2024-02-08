@@ -37,7 +37,7 @@ class DisplayScreen extends StatefulWidget {
 }
 
 class _DisplayScreenState extends State<DisplayScreen> {
-  String responseText = ''; // to store the response from the backend
+  String disname = ''; // to store the response from the backend
 
   @override
   void initState() {
@@ -60,13 +60,10 @@ class _DisplayScreenState extends State<DisplayScreen> {
         // Decode the response from JSON to a string or list
         var decodedData = jsonDecode(response.body);
         print("succesful");
+        print(decodedData.toString());
         // Update the state with the decoded data
         setState(() {
-          if (decodedData is String) {
-            responseText = decodedData;
-          } else if (decodedData is List) {
-            responseText = decodedData.toString();
-          }
+          disname=decodedData['message'];
         });
       }
       else{
@@ -91,7 +88,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
             color:kPrimaryColor,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Text(responseText),
+          child: Text(disname),
         ),
       ),
     );
