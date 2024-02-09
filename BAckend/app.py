@@ -3,6 +3,13 @@ import pandas as pd
 import numpy as np
 app = Flask(__name__)
 
+# @app.route('/',methods=['GET'])
+# def home():
+#     app.run(host='0.0.0.0', port=5000)
+#     return 'Hello World!'
+
+
+
 @app.route('/receive-json', methods=['POST'])
 def receive_json():
     try:
@@ -107,7 +114,8 @@ def receive_json():
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
             #decision tree classifier
             from sklearn.tree import DecisionTreeClassifier
-            dtc = DecisionTreeClassifier()
+            from sklearn.ensemble import RandomForestClassifier
+            dtc = RandomForestClassifier()
             dtc.fit(X_train, y_train)
             cols=list(df_sorted_columns.columns)
             cols.remove('prognosis')
@@ -149,12 +157,12 @@ def receive_json():
             predicted_dtc=dtc.predict(dis)
             predicted_disease=le.inverse_transform(predicted_dtc)
             print("predicted_disease: ",predicted_disease[0])
-            
+
 
             # print(predicteddtc)
             # print(le.inverse_transform(dtc.predict(dis)))
             # print(type(le.inverse_transform(dtc.predict(dis))))
-
+            
             return jsonify({'status': 'success', 'message': predicted_disease[0]})
         else:
             return jsonify({'status': 'error', 'message': 'No JSON data received'}), 400

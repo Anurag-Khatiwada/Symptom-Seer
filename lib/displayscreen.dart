@@ -4,29 +4,6 @@ import 'package:s_seer_final/homescreen.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-// class DisplayScreen extends StatelessWidget {
- 
-//   DisplayScreen({super.key, required this.data});
-//   List data;
-  
-//   //String jsonString = jsonEncode(data);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));},
-//         child: Container(
-//           height: 500,width: 300,
-//           decoration: BoxDecoration(color: kPrimaryColor,borderRadius: BorderRadius.circular(10)),
-          
-//           child: Text("$data"),
-          
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class DisplayScreen extends StatefulWidget {
   DisplayScreen({super.key, required this.data});
 
@@ -76,7 +53,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+return Center(
       child: GestureDetector(
         onTap: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
@@ -88,7 +65,26 @@ class _DisplayScreenState extends State<DisplayScreen> {
             color:kPrimaryColor,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Text(disname),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(18.0,50,18,0),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children:[
+                const Text(
+              'You may have been suffering from:',textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 25,color: Colors.black,decoration: TextDecoration.none),
+            ),
+            Text(disname,style: const TextStyle(fontSize: 35,color: Colors.black,decoration: TextDecoration.none),
+            ),
+            const SizedBox(height: 20),
+            const Text('Disclaimer: We do not assert absolute accuracy in our predictions and recommend that you seek further examination at the nearest health centers for a comprehensive checkup.',
+              style: TextStyle(fontSize: 10,color: Colors.black,decoration: TextDecoration.none),
+              textAlign: TextAlign.center,
+            ),
+            
+              ],
+            ),
+          ),
         ),
       ),
     );

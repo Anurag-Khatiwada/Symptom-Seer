@@ -16,10 +16,18 @@ class DropdownSelect extends StatefulWidget {
 
 class _DropdownSelectState extends State<DropdownSelect> {
   final AppDataController controller=Get.put(AppDataController());
+  
+  List subjectData =[];
+  
+  @override
+  void initState() {
+    subjectData.clear();
+     // automatically send and receive data when the page opens
+  }
 
   @override
   Widget build(BuildContext context) {
-    List subjectData =[];
+    
     
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {controller.getSubjectData();});
     return Positioned(
