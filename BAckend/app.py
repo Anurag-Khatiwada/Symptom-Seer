@@ -101,7 +101,7 @@ def receive_json():
 
             disease= ['Acne', 'Allergy', 'Common Cold', 'Chicken pox', 'Dengue','Diabetes ', 'Jaundice', 'Malaria', 'Pneumonia', 'Tuberculosis','Typhoid','Gastroenteritis','Migraine','Arthritis','Bronchial Asthma']
             df_filtered = df3[df3['prognosis'].str.contains('|'.join(disease))]
-
+            df_filtered=df_filtered.drop_duplicates()
             df_sorted_columns = df_filtered.sort_index(axis=1)
             X= df_sorted_columns.drop(columns=['prognosis'])
             y= df_sorted_columns['prognosis']
@@ -111,7 +111,7 @@ def receive_json():
             from sklearn.preprocessing import LabelEncoder
             le = LabelEncoder()
             y = le.fit_transform(y)
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=45)
             #decision tree classifier
             from sklearn.tree import DecisionTreeClassifier
             from sklearn.ensemble import RandomForestClassifier
@@ -158,12 +158,55 @@ def receive_json():
             predicted_disease=le.inverse_transform(predicted_dtc)
             print("predicted_disease: ",predicted_disease[0])
 
+            data=pd.read_csv("E:\Flutter\s_seer_final\Backend\Symptom_severity.csv")
+            sum=0
+            for index,symptom in enumerate(data["symptoms"]):
+                if symptom in symp_name:
+                    sum=sum+data["severity"][index]
+            print(sum)
+            
+            sum=0
+            count=0
+            for index,symptom in enumerate(data["symptoms"]):
+                if symptom in symp_name:
+                    if(data['severity'][index]>5):
+                        count=count+1
+                    sum=sum+data["severity"][index]
 
+            print(sum)
+
+            sevm=sum/len(symp_name)
+
+            if(count>=2):
+                sev='It might be highly severe.'
+                print('severe')
+            elif sevm<=3:
+                sev='It might be mildly severe.'
+                print("mild")
+            elif sevm<=6:
+                sev='It might be moderately severe.'
+                print("moderate")
+            else:
+                sev='It might be highly severe.'
+                print('severe')
+            
+            # sev=sum/len(symp_name)
+
+            # if sev<=3:
+            #     sev='It might be mildly severe.'
+            #     print("mild")
+            # elif sev<=5:
+            #     sev='It might be moderately severe.'
+            #     print("moderate")
+            # else:
+            #     sev='It might be highly severe.'
+            #     print("severe")
+    
             # print(predicteddtc)
             # print(le.inverse_transform(dtc.predict(dis)))
             # print(type(le.inverse_transform(dtc.predict(dis))))
             
-            return jsonify({'status': 'success', 'message': predicted_disease[0]})
+            return jsonify({'status': 'success', 'message': predicted_disease[0],'sev':sev})
         else:
             return jsonify({'status': 'error', 'message': 'No JSON data received'}), 400
 

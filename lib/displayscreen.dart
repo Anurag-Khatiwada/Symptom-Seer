@@ -15,6 +15,8 @@ class DisplayScreen extends StatefulWidget {
 
 class _DisplayScreenState extends State<DisplayScreen> {
   String disname = ''; // to store the response from the backend
+  String sev = ''; 
+  
 
   @override
   void initState() {
@@ -41,6 +43,8 @@ class _DisplayScreenState extends State<DisplayScreen> {
         // Update the state with the decoded data
         setState(() {
           disname=decodedData['message'];
+          sev=decodedData['sev'];
+
         });
       }
       else{
@@ -68,13 +72,24 @@ return Center(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(18.0,50,18,0),
             child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children:[
+                const Text(
+              'Symptoms entered:',textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20,color: Colors.black,decoration: TextDecoration.none),
+            ),
+                Text(widget.data.toString(),textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 12,color: Colors.black,decoration: TextDecoration.none)
+                ),
+                const SizedBox(height: 20),
                 const Text(
               'You may have been suffering from:',textAlign: TextAlign.center,
               style: TextStyle(fontSize: 25,color: Colors.black,decoration: TextDecoration.none),
             ),
+            const SizedBox(height: 20),
             Text(disname,style: const TextStyle(fontSize: 35,color: Colors.black,decoration: TextDecoration.none),
+            ),
+            Text(sev,textAlign: TextAlign.center,style: const TextStyle(fontSize: 22,color: Colors.black,decoration: TextDecoration.none),
             ),
             const SizedBox(height: 20),
             const Text('Disclaimer: We do not assert absolute accuracy in our predictions and recommend that you seek further examination at the nearest health centers for a comprehensive checkup.',
