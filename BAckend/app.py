@@ -1,12 +1,15 @@
+from sklearn.ensemble import RandomForestClassifier
+
+
 from flask import Flask, request, jsonify
 import pandas as pd
 import numpy as np
 app = Flask(__name__)
 
-# @app.route('/',methods=['GET'])
-# def home():
-#     app.run(host='0.0.0.0', port=5000)
-#     return 'Hello World!'
+@app.route('/',methods=['GET', 'POST'])
+def home():
+    app.run(host='0.0.0.0', port=5000)
+    return 'Hello World!'
 
 
 
@@ -22,6 +25,7 @@ def receive_json():
             print('Received JSON:', data)
         
             # You can perform additional processing or validation here
+            
             df3 = pd.read_csv("E:\Flutter\s_seer_final\Backend\Training.csv", usecols=['pain_behind_the_eyes',
              'sunken_eyes',
              'movement_stiffness',
@@ -114,12 +118,11 @@ def receive_json():
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=45)
             #decision tree classifier
             from sklearn.tree import DecisionTreeClassifier
-            from sklearn.ensemble import RandomForestClassifier
             dtc = RandomForestClassifier()
             dtc.fit(X_train, y_train)
+            dtc.score(X_test, y_test)
             cols=list(df_sorted_columns.columns)
             cols.remove('prognosis')
-            import json
             symp_name=(data)
             print(type(data))
             print(symp_name)

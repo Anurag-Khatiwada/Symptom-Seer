@@ -62,7 +62,7 @@ String remedies;
                         color: kBackgroundColor),width: 200,
                         child: Center(
                           child: Text("Description",textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,)),
                         ),
                       ),
                     ),
