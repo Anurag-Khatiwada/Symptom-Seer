@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from flask import Flask, request, jsonify
 import pandas as pd
 import numpy as np
+import threading
 app = Flask(__name__)
 
 @app.route('/',methods=['GET', 'POST'])
@@ -218,4 +219,12 @@ def receive_json():
         return jsonify({'status': 'error', 'message': 'Internal server error'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    # Define a function to run the Flask app
+    def run_flask_app():
+        app.run(host='0.0.0.0', port=5000)
+
+    # Create a thread to run the Flask app
+    flask_thread = threading.Thread(target=run_flask_app)
+
+    # Start the thread
+    flask_thread.start()

@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:s_seer_final/constants.dart';
 import 'package:s_seer_final/homescreen.dart';
-import 'package:s_seer_final/settings.dart';
-
 import 'allpage.dart';
 import 'helppage.dart';
 
@@ -21,12 +19,8 @@ class _MyDrawerState extends State<MyDrawer> {
   List _all = [];
 
   void initState() {
-    _getThingsOnStartup().then((value){});
-    super.initState();
-  }
-   Future _getThingsOnStartup() async {
-    await Future.delayed(Duration(seconds: 1));
     readJson();
+    super.initState();
   }
   Future<void> readJson() async{
     final String response = await rootBundle.loadString("assets/commondata.json");

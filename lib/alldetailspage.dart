@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:s_seer_final/constants.dart';
-import 'package:s_seer_final/homescreen.dart';
 
-class Detailpage extends StatelessWidget{
-Detailpage({super.key, required this.num, required this.name, required this.symptoms, required this.description, required this.prevention,required this.remedies});
+class AllDetailpage extends StatelessWidget{
+AllDetailpage({super.key, required this.num, required this.name, required this.symptoms, required this.description, required this.prevention,required this.remedies});
 
 int num;
 String name;
@@ -15,12 +14,7 @@ String remedies;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
-        return true; // Return true to allow the back button press
-      },
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: kBackgroundColor,
         body: SafeArea(
           child: Padding(
@@ -115,7 +109,6 @@ String remedies;
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

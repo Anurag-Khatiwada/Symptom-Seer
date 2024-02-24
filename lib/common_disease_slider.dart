@@ -28,14 +28,8 @@ class _CommonDiseaseSliderState extends State<CommonDiseaseSlider> {
 
 @override
 void initState() {
-    _getThingsOnStartup().then((value){
-      print(' Common Async done');
-    });
+  readJson();
     super.initState();
-  }
-  Future _getThingsOnStartup() async {
-    await Future.delayed(Duration(seconds: 1));
-    readJson();
   }
   Future<void> readJson() async{
     final String response = await rootBundle.loadString("assets/commondata.json");

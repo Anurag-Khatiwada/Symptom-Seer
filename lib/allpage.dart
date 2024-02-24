@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:s_seer_final/alldetailspage.dart';
 import 'package:s_seer_final/constants.dart';
 import 'package:s_seer_final/drawer.dart';
-
-import 'details_page.dart';
 
  class AllPage extends StatelessWidget {
    AllPage({super.key, required this.all});
@@ -33,7 +32,7 @@ import 'details_page.dart';
                       title: Text(all[index]["name"],style: TextStyle(fontWeight: FontWeight.bold)),
                       subtitle: Text(all[index]["description"],overflow: TextOverflow.ellipsis,),
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Detailpage(num: index, name: all[index]["name"],symptoms: all[index]["symptoms"],description: all[index]["description"],  prevention: all[index]["prevention"],remedies:all[index]["remedies"])));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> AllDetailpage(num: index, name: all[index]["name"],symptoms: all[index]["symptoms"],description: all[index]["description"],  prevention: all[index]["prevention"],remedies:all[index]["remedies"])));
                       },
                     ),
                   );
