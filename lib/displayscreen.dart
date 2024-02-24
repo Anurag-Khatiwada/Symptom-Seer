@@ -38,6 +38,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
   }
 // http://10.0.2.2:5000
   void sendAndReceiveData() async {
+    // Change the apiUrl to the website location, in this case to the website provided by the ngrok server
     String apiUrl = 'https://291e-2404-7c00-48-a186-95c6-5131-168f-f535.ngrok-free.app//receive-json';
     String jsonString = jsonEncode(widget.data);
 
