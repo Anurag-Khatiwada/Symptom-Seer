@@ -33,13 +33,12 @@ class _DisplayScreenState extends State<DisplayScreen> {
     setState((){
       _data=data["all"];
       print('async done');
-
     });
   }
 // http://10.0.2.2:5000
   void sendAndReceiveData() async {
     // Change the apiUrl to the website location, in this case to the website provided by the ngrok server
-    String apiUrl = 'https://291e-2404-7c00-48-a186-95c6-5131-168f-f535.ngrok-free.app//receive-json';
+    String apiUrl = 'https://6124-2404-7c00-44-63cc-9ce1-6298-49eb-7aaf.ngrok-free.app//receive-json';
     String jsonString = jsonEncode(widget.data);
 
     try {
@@ -58,7 +57,6 @@ class _DisplayScreenState extends State<DisplayScreen> {
         setState(() {
           disname=decodedData['message'];
           sev=decodedData['sev'];
-
         });
       }
       else{
@@ -79,10 +77,14 @@ return WillPopScope(
    child: Center(
         child: GestureDetector(
           onTap: (){
-            String dis=disname;
-            dis=dis.toUpperCase();
-            int i=_data.indexWhere((disease) => disease['name'] == dis);
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> Detailpage(num: i, name: _data[i]["name"],symptoms: _data[i]["symptoms"],description: _data[i]["description"],  prevention: _data[i]["prevention"],remedies: _data[i]["remedies"],)));      
+            if (disname == ''){}
+            else
+            {
+              String dis=disname;
+              dis=dis.toUpperCase();
+              int i=_data.indexWhere((disease) => disease['name'] == dis);
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> Detailpage(num: i, name: _data[i]["name"],symptoms: _data[i]["symptoms"],description: _data[i]["description"],  prevention: _data[i]["prevention"],remedies: _data[i]["remedies"],))); 
+            }
           },
           child: Container(
             height: 500,
@@ -97,34 +99,33 @@ return WillPopScope(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children:[
                   const Text(
-                'Symptoms entered:',textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20,color: Colors.black,decoration: TextDecoration.none),
-              ),
+                  'Symptoms entered:',textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20,color: Colors.black,decoration: TextDecoration.none),
+                  ),
                   Text(widget.data.toString(),textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 12,color: Colors.black,decoration: TextDecoration.none)
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                'You may have been suffering from:',textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 25,color: Colors.black,decoration: TextDecoration.none),
-              ),
-              const SizedBox(height: 20),
-              Text(disname,style: const TextStyle(fontSize: 35,color: Colors.black,decoration: TextDecoration.none),
-              ),
-              Text(sev,textAlign: TextAlign.center,style: const TextStyle(fontSize: 22,color: Colors.black,decoration: TextDecoration.none),
-              ),
-              const SizedBox(height: 20),
-              const Text('Disclaimer: We do not assert absolute accuracy in our predictions and recommend that you seek further examination at the nearest health centers for a comprehensive checkup.',
-                style: TextStyle(fontSize: 10,color: Colors.black,decoration: TextDecoration.none),
-                textAlign: TextAlign.center,
-              ),
-              
+                  'You may have been suffering from:',textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 25,color: Colors.black,decoration: TextDecoration.none),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(disname,style: const TextStyle(fontSize: 35,color: Colors.black,decoration: TextDecoration.none),
+                  ),
+                  Text(sev,textAlign: TextAlign.center,style: const TextStyle(fontSize: 22,color: Colors.black,decoration: TextDecoration.none),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text('Disclaimer: We do not assert absolute accuracy in our predictions and recommend that you seek further examination at the nearest health centers for a comprehensive checkup.',
+                    style: TextStyle(fontSize: 10,color: Colors.black,decoration: TextDecoration.none),
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),
           ),
         ),
       ),
-);
+    );
   }
 }

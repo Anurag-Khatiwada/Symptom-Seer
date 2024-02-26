@@ -99,10 +99,8 @@ class _DropdownSelectState extends State<DropdownSelect> {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=> DisplayScreen(data:subjectData)));  
                     }
                   },
-                  
                   chipDisplay: MultiSelectChipDisplay.none(),
                 ),
-                
               );
             }),
           ],
