@@ -77,7 +77,6 @@ class _DropdownSelectState extends State<DropdownSelect> {
                                     Spacer(),
                                     Text("Atleast enter 4 different symptoms.",
                                           style: TextStyle(color: Colors.black,fontSize: 15),maxLines: 2,overflow: TextOverflow.ellipsis,),
-                                    
                                   ],
                                 ),
                               ),
