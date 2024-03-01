@@ -1,4 +1,4 @@
-# s_seer_final
+# S-Seer
 
 A new Flutter project.
 
